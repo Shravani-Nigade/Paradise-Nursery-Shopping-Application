@@ -1,31 +1,62 @@
 import React, { useState } from "react";
-import ProductList from "./components/ProductList";
+import ProductList from "./ProductList";
+import AboutUs from "./AboutUs";
+import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
+import "./App.css";
 
-const App = () => {
+function App() {
   const [showProducts, setShowProducts] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
+  const cart = useSelector((state) => state.cart);
 
   const handleGetStarted = () => {
     setShowProducts(true);
   };
 
-  return (
-    <div>
-      {!showProducts ? (
-        <div className="landing-page">
-          <div className="landing-content">
-            <h1>🌿 Paradise Nursery</h1>
-            <p>Bring nature into your home with beautiful plants</p>
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
-            <button onClick={handleGetStarted}>
-              Get Started
-            </button>
-          </div>
+  return (
+    <div className="App">
+      <h1>🌿 Paradise Nursery</h1>
+
+      {!showProducts ? (
+        <div className="landing">
+          <AboutUs />
+          <button onClick={handleGetStarted}>Get Started</button>
         </div>
       ) : (
-        <ProductList />
+        <>
+          <div className="navbar">
+            <button onClick={() => setShowCart(false)}>Products</button>
+            <button onClick={() => setShowCart(true)}>
+              Cart ({cart.length})
+            </button>
+          </div>
+
+          {!showCart ? (
+            <ProductList />
+          ) : (
+            <div>
+              <h2>Your Cart 🛒</h2>
+
+              {cart.length === 0 ? (
+                <p>Cart is empty</p>
+              ) : (
+                cart.map((item) => <CartItem key={item.id} item={item} />)
+              )}
+
+              <h3>Total Amount: ₹{totalAmount}</h3>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
-};
+}
 
 export default App;
