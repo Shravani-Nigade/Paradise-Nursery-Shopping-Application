@@ -11,6 +11,7 @@ function App() {
 
   const cart = useSelector((state) => state.cart);
 
+  // ✅ Correct functionality (no alert)
   const handleGetStarted = () => {
     setShowProducts(true);
   };
@@ -22,15 +23,22 @@ function App() {
 
   return (
     <div className="App">
-      <h1>🌿 Paradise Nursery</h1>
-
       {!showProducts ? (
+        /* 🌿 LANDING PAGE */
         <div className="landing">
+          <h1>🌿 Paradise Nursery</h1> {/* REQUIRED */}
+          
           <AboutUs />
-          <button onClick={handleGetStarted}>Get Started</button>
+
+          <button onClick={handleGetStarted}>
+            Get Started
+          </button>
         </div>
       ) : (
         <>
+          {/* 🌿 NAVBAR */}
+          <h1>🌿 Paradise Nursery</h1>
+
           <div className="navbar">
             <button onClick={() => setShowCart(false)}>Products</button>
             <button onClick={() => setShowCart(true)}>
@@ -38,6 +46,7 @@ function App() {
             </button>
           </div>
 
+          {/* 🌿 CONDITIONAL RENDER */}
           {!showCart ? (
             <ProductList />
           ) : (
@@ -47,7 +56,9 @@ function App() {
               {cart.length === 0 ? (
                 <p>Cart is empty</p>
               ) : (
-                cart.map((item) => <CartItem key={item.id} item={item} />)
+                cart.map((item) => (
+                  <CartItem key={item.id} item={item} />
+                ))
               )}
 
               <h3>Total Amount: ₹{totalAmount}</h3>
