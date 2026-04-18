@@ -6,28 +6,22 @@ const AboutUs = () => {
       <h1>About Paradise Nursery</h1>
 
       <p>
-        Paradise Nursery is a fictional online plant store created to bring
-        nature closer to your home. We specialize in providing a wide variety
-        of indoor plants that improve air quality and enhance living spaces.
+        Paradise Nursery is a fictional online plant shop dedicated to
+        bringing greenery into every home. We offer a wide range of indoor
+        and outdoor plants that improve air quality and enhance living spaces.
       </p>
 
       <p>
-        Our mission is to promote a greener and healthier lifestyle by making
+        Our mission is to promote a healthy, eco-friendly lifestyle by making
         plants affordable and accessible to everyone.
-      </p>
-
-      <p>
-        We believe that every home deserves a touch of nature, and our curated
-        collection of plants is designed to suit both beginners and plant
-        enthusiasts.
       </p>
 
       <h3>Why Choose Us?</h3>
       <ul>
-        <li>High-quality indoor plants</li>
+        <li>High-quality plants</li>
         <li>Affordable pricing</li>
+        <li>Eco-friendly packaging</li>
         <li>Easy plant care guidance</li>
-        <li>Eco-friendly approach</li>
       </ul>
     </div>
   );
