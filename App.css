@@ -1,12 +1,19 @@
+/* 🌿 GLOBAL STYLES */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #f4fff4;
 }
 
-/* 🌿 Landing Page Background */
+/* 🌿 MAIN APP */
+.App {
+  text-align: center;
+}
+
+/* 🌿 LANDING PAGE */
 .landing {
   height: 100vh;
-  background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6"); /* plant theme */
+  background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -17,10 +24,11 @@ body {
   align-items: center;
 
   color: white;
+  position: relative;
   text-align: center;
 }
 
-/* Overlay effect for better readability */
+/* 🌿 DARK OVERLAY */
 .landing::before {
   content: "";
   position: absolute;
@@ -32,6 +40,8 @@ body {
   z-index: 0;
 }
 
+/* Ensure content appears above overlay */
+.landing h1,
 .landing h2,
 .landing p,
 .landing button {
@@ -39,53 +49,92 @@ body {
   z-index: 1;
 }
 
-/* App Container */
-.App {
-  text-align: center;
+/* 🌿 NAVBAR */
+.navbar {
+  margin: 20px;
 }
 
-/* Buttons */
+/* 🌿 BUTTONS */
 button {
-  margin: 10px;
+  margin: 8px;
   padding: 10px 15px;
   cursor: pointer;
   background-color: green;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 button:hover {
   background-color: darkgreen;
 }
 
-/* Grid Layout */
+/* 🌿 PRODUCT SECTION */
+.product-container {
+  padding: 20px;
+}
+
+.category-section {
+  margin-bottom: 30px;
+}
+
+/* 🌿 GRID */
 .grid {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Product Card */
+/* 🌿 PRODUCT CARD */
 .card {
   border: 1px solid #ccc;
   padding: 15px;
   margin: 10px;
-  width: 160px;
+  width: 180px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+/* 🌿 PRODUCT IMAGE */
+.plant-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 🌿 CART SECTION */
+.cart-container {
+  padding: 20px;
+}
+
+/* 🌿 CART ITEM */
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 12px;
   border-radius: 10px;
   background-color: #ffffff;
 }
 
-/* Cart Item */
-.cart-item {
-  border: 1px solid gray;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
+/* 🌿 CART IMAGE */
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
 }
 
-/* Navbar */
-.navbar {
-  margin-bottom: 20px;
+/* 🌿 CART DETAILS */
+.cart-details {
+  text-align: left;
+}
+
+.cart-details button {
+  margin: 5px;
 }
