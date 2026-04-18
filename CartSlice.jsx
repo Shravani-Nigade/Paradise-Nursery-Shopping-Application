@@ -3,34 +3,46 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: [],
-  reducers: {
-    addToCart: (state, action) => {
-      const item = state.find((i) => i.id === action.payload.id);
 
-      if (item) {
-        item.quantity += 1;
+  reducers: {
+    // ✅ 1. Add Item
+    addItem: (state, action) => {
+      const existingItem = state.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingItem) {
+        existingItem.quantity += 1;
       } else {
         state.push({ ...action.payload, quantity: 1 });
       }
     },
 
-    removeFromCart: (state, action) => {
+    // ✅ 2. Remove Item
+    removeItem: (state, action) => {
       return state.filter((item) => item.id !== action.payload);
     },
 
-    increment: (state, action) => {
-      const item = state.find((i) => i.id === action.payload);
-      item.quantity += 1;
-    },
+    // ✅ 3. Update Quantity
+    updateQuantity: (state, action) => {
+      const { id, amount } = action.payload;
 
-    decrement: (state, action) => {
-      const item = state.find((i) => i.id === action.payload);
-      if (item.quantity > 1) item.quantity -= 1;
+      const item = state.find((item) => item.id === id);
+
+      if (item) {
+        item.quantity += amount;
+
+        // Prevent quantity from going below 1
+        if (item.quantity <= 0) {
+          return state.filter((i) => i.id !== id);
+        }
+      }
     },
   },
 });
 
-export const { addToCart, removeFromCart, increment, decrement } =
-  cartSlice.actions;
+// ✅ Export actions
+export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
 
+// ✅ Export reducer
 export default cartSlice.reducer;
