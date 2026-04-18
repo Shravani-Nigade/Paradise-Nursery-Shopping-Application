@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import ProductList from "./components/ProductList";
 
 const App = () => {
+  const [showProducts, setShowProducts] = useState(false);
+
   const handleGetStarted = () => {
-    // You can later connect this to navigation (React Router)
-    alert("Welcome to Paradise Nursery!");
+    setShowProducts(true);
   };
 
   return (
-    <div className="landing-page">
-      <div className="landing-content">
-        <h1>🌿 Paradise Nursery</h1>
-        <p>Bring nature into your home with beautiful indoor plants</p>
+    <div>
+      {!showProducts ? (
+        <div className="landing-page">
+          <div className="landing-content">
+            <h1>🌿 Paradise Nursery</h1>
+            <p>Bring nature into your home with beautiful plants</p>
 
-        <button onClick={handleGetStarted}>
-          Get Started
-        </button>
-      </div>
+            <button onClick={handleGetStarted}>
+              Get Started
+            </button>
+          </div>
+        </div>
+      ) : (
+        <ProductList />
+      )}
     </div>
   );
 };
