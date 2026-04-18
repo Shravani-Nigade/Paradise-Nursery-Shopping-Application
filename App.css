@@ -1,68 +1,47 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f9f4;
-}
-
-/* Landing Page */
-.landing-page {
-  height: 100vh;
-  background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  color: white;
-}
-
-.landing-page::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0,0,0,0.5);
-}
-
-.landing-content {
-  position: relative;
+  font-family: Arial;
+  background-color: #f4fff4;
   text-align: center;
 }
 
-button {
-  padding: 10px 20px;
-  background: green;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-/* Product */
-.product-container {
+.App {
   padding: 20px;
 }
 
-.product-grid {
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+.grid {
   display: flex;
-  gap: 15px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.product-card {
+.card {
   border: 1px solid #ccc;
-  padding: 10px;
-  width: 180px;
-  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  width: 150px;
+  border-radius: 10px;
 }
 
-/* Cart */
 .cart-item {
-  display: flex;
-  gap: 10px;
+  border: 1px solid gray;
   margin: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.navbar {
+  margin-bottom: 20px;
 }
