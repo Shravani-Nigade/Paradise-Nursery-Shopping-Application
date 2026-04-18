@@ -1,46 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeItem, updateQuantity } from "../features/CartSlice";
+import { increment, decrement, removeFromCart } from "./CartSlice";
 
-const CartItem = ({ item }) => {
+function CartItem({ item }) {
   const dispatch = useDispatch();
-
-  const handleIncrease = () => {
-    dispatch(
-      updateQuantity({ id: item.id, quantity: item.quantity + 1 })
-    );
-  };
-
-  const handleDecrease = () => {
-    if (item.quantity > 1) {
-      dispatch(
-        updateQuantity({ id: item.id, quantity: item.quantity - 1 })
-      );
-    }
-  };
 
   return (
     <div className="cart-item">
-      <img src={item.image} alt={item.name} />
+      <h4>{item.name}</h4>
+      <p>Price: ₹{item.price}</p>
+      <p>Quantity: {item.quantity}</p>
+      <p>Total: ₹{item.price * item.quantity}</p>
 
-      <div>
-        <h3>{item.name}</h3>
-        <p>₹{item.price}</p>
-
-        <div className="qty-controls">
-          <button onClick={handleDecrease}>-</button>
-          <span>{item.quantity}</span>
-          <button onClick={handleIncrease}>+</button>
-        </div>
-
-        <button
-          onClick={() => dispatch(removeItem(item.id))}
-        >
-          Remove
-        </button>
-      </div>
+      <button onClick={() => dispatch(increment(item.id))}>+</button>
+      <button onClick={() => dispatch(decrement(item.id))}>-</button>
+      <button onClick={() => dispatch(removeFromCart(item.id))}>
+        Remove
+      </button>
     </div>
   );
-};
+}
 
 export default CartItem;
